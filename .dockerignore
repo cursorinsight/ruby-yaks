@@ -1,0 +1,12 @@
+# Ignore self -- we don't want to rebuild images just because a single, but not
+# necessarily related file changed
+/Dockerfile
+/.dockerignore
+
+# Git
+/.git
+
+# Editor helper files
+**/.*.swo
+**/.*.swp
+/tags.*

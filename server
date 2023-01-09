@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'bundler/setup'
+require 'sinatra'
+require 'sinatra/reloader'
+require 'pry'
+require 'puma'
+require './lib/app'
+also_reload 'lib/**/*.rb'
