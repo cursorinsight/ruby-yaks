@@ -52,7 +52,9 @@ get '/pks/lookup' do
       'Content-Disposition' => 'attachment; filename=openpgpkey.asc'
     keys.first.export(:armor => true).read
   when /^v?index$/
-    keys = GPGME::Key.find(:public, params[:search])
+    search = params[:search]
+    search = %{<#{search}>} if params[:exact] == 'on'
+    keys = GPGME::Key.find(:public, search)
     status(404) && return unless keys.size > 0
     headers 'Content-Type' => 'text/plain; charset=utf-8'
 
