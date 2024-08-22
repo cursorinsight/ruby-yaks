@@ -50,7 +50,7 @@ get '/pks/lookup' do
     headers \
       'Content-Type' => 'application/pgp-keys; charset=utf-8',
       'Content-Disposition' => 'attachment; filename=openpgpkey.asc'
-    keys.first.export.read
+    keys.first.export(:armor => true).read
   when /^v?index$/
     keys = GPGME::Key.find(:public, params[:search])
     status(404) && return unless keys.size > 0
