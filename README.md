@@ -65,11 +65,15 @@ keys on Linux, the most common way to manage keys with YAKS is the following:
 
 ## Thunderbird
 
-As of release 78, Thunderbird provides an internal tool to manage GPG keys
-which works only with servers using the [WKD/WKS protocol][wkd-wks-protocol].
+As of release 115, Thunderbird's internal tool to manage GPG keys supports the
+HKP protocol, that this server implements. To use your server you have to set
+the  `mail.openpgp.keyserver_list` configuration parameter in Thunderbird to the
+server address, e.g.: hkps://yaks.address.com.
 
-You have to manually download the desired key from the YAKS server, export it
-and then import it into Thunderbird, e.g.:
+Earlier versions of Thunderbird only support servers using the
+[WKD/WKS protocol][wkd-wks-protocol]. In this case you have to manually download
+the desired key from the YAKS server, export it and then import it into
+Thunderbird, e.g.:
 
 ```
 $ gpg --keyserver hkps://yaks.address.com --export --armor --output bence.asc \
